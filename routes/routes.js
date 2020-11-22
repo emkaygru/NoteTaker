@@ -7,20 +7,34 @@ module.exports = app => {
 
         var notes = JSON.parse(data);
 
+        // ====== API Routes ======
+
+        //set up /api notes get route
         app.get('/api/notes', (req, res) => {
             res.json(notes);
         });
 
+        // api post route 
         app.post('/api/notes', (req, res) => {
+            // new note variable 
+            // receives a new notes, adds it to the db.json and returns a new note 
             let newNote = req.body;
+            // notes pushed to notes array 
             notes.push(newNote);
+
             fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
                 if (err) throw err;
                 res.json(notes);
             });
 
         });
+        //retrieves note with specific id
+        app.get('/api/notes/:id', (req, res) => {
+            // displays json index for notes array of iD 
+            res.json(notes[req.params.id]);
+        });
 
+        // deletes notes with specified id 
         app.delete('/api/notes/:id', (req, res) => {
             var id = req.params.id;
 
@@ -36,11 +50,11 @@ module.exports = app => {
         });
 
         // ====== View Routes ======
-
+        // display notes.html when /notes is visited 
         app.get('/notes', (req, res) => {
             res.sendFile(path.join(__dirname, '../public/notes.html'));
         });
-
+        // display index.html when all other routes are visited 
         app.get('*', (req, res) => {
             res.sendFile(path.join(__dirname, '../public/index.html'));
         });
