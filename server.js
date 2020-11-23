@@ -15,5 +15,5 @@ app.use(express.static(__dirname));
 
 // set up listener
 app.listen(PORT, function () {
-    console.log('App is listening on PORT: ' + PORT);
+    console.log('Server is running on PORT: ' + PORT);
 });
