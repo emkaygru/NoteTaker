@@ -1,6 +1,6 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 
 // initialize express
 const app = express();
@@ -11,9 +11,12 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static('public'));
+
+// routes setup 
+require('./routes/routes')(app);
 
 // set up listener
-app.listen(PORT, function () {
+app.listen(PORT, () => {
     console.log('Server is running on PORT: ' + PORT);
 });

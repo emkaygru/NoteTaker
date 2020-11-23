@@ -14,26 +14,28 @@ module.exports = app => {
             res.json(notes);
         });
 
-        // api post route 
-        app.post('/api/notes', (req, res) => {
-            // new note variable 
-            // receives a new notes, adds it to the db.json and returns a new note 
-            let newNote = req.body;
-            // notes pushed to notes array 
-            notes.push(newNote);
-
-            fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
-                if (err) throw err;
-                res.json(notes);
-            });
-
-        });
+       
         //retrieves note with specific id
         app.get('/api/notes/:id', (req, res) => {
             // displays json index for notes array of iD 
             res.json(notes[req.params.id]);
         });
 
+         // api post route 
+         app.post('/api/notes', (req, res) => {
+            // new note variable 
+            // receives a new notes, adds it to the db.json and returns a new note 
+            let newNote = req.body;
+            // notes pushed to notes array 
+            notes.push(newNote);
+
+            fs.writeFile('./db/db.json', JSON.stringify(notes,'/t'), (err) => {
+                if (err) throw err;
+                res.json(notes);
+            });
+
+        });
+        
         // deletes notes with specified id 
         app.delete('/api/notes/:id', (req, res) => {
             var id = req.params.id;
@@ -43,7 +45,7 @@ module.exports = app => {
                     notes.splice(i, 1);
                 };
             };
-            fs.writeFile('./db/db.json', JSON.stringify(notes), (err) => {
+            fs.writeFile('./db/db.json', JSON.stringify(notes,'/t'), (err) => {
                 if (err) throw err;
                 res.json(notes);
             });
