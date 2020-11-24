@@ -7,10 +7,10 @@ Preview How to use the app below:
 ![Application Preview](notetaker.gif)
 
 ## Heroku Deployed App Link
-![Heroku App](https://emkaygru-notetaker.herokuapp.com)
+(https://emkaygru-notetaker.herokuapp.com)
 
 ## Github Repository Link
-![Github Rep0](https://github.com/emkaygru/NoteTaker)
+(https://github.com/emkaygru/NoteTaker)
 
 ## Installation Instructions 
 * Clone the repository to your machine using the `git clone` command 
