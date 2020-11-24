@@ -40,6 +40,14 @@ module.exports = app => {
             res.json(notes[req.params.id]);
         });
 
+        app.delete("/api/notes/all", function(req, res){
+            notes.splice(0, notes.length);
+            fs.writeFile("./db/db.json", JSON.stringify(notes), err => {
+                if(err) throw err;
+                res.json(notes);
+            });
+        });
+
         // deletes notes with specified id 
         app.delete('/api/notes/:id', (req, res) => {
             var id = req.params.id;
