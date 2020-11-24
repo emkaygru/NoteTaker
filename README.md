@@ -4,7 +4,7 @@ Note Taker is a simple app that allows you to save your notes with a title and t
 
 ## Preview 
 Preview How to use the app below: 
-![Application Preview](demo.gif)
+![Application Preview](notetaker.gif)
 
 ## Heroku Deployed App Link
 ![Heroku Deployed App](https://emkaygru-notetaker.herokuapp.com/)
